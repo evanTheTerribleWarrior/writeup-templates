@@ -83,11 +83,8 @@ ftp>
 So we will move on for now to other ports.
 
 
-## Exploitation
-
 We will start with port 80. It seems to give a static site without much on it
 
-![Port 80 Main Page](img/p80main.png "Port 80 Main Page")
 
 We run `gobuster` to find potential directories:
 
@@ -113,13 +110,9 @@ Apart from the standard directories (like `javascript`), we see also two interes
 
 We look at the `app` directory first, and seems to give us files of an application.
 
-![Port 80 App Page](img/p80app.png "Port 80 App Page")
-
 If we check the `README` file seems to be a react app. We will keep that information and move on.
 
 On the `cms` endpoint we seem to get a CMS page, but not much else
-
-![Port 80 CMS Page](img/p80cms.png "Port 80 CMS Page")
 
 We run another `gobuster` to see if we can uncover any interesting paths
 
@@ -141,8 +134,6 @@ We run another `gobuster` to see if we can uncover any interesting paths
 
 Let's try the admin.php page:
 
-![Port 80 Admin Page](img/p80cmsadmin.png "Port 80 Admin Page")
-
 We see that it requires a password which we don't have, but more interestingly we find that this is a page of the `Pluck CMS` and version 4.7.13
 
 We will use `searchsploit` to check any vulnerabilities. First we update it with `sudo searchsploit -u` to get the most updated database (takes some time, so alternatively we can look directly to ExploitDB website)
@@ -160,8 +151,6 @@ Pluck CMS 4.7.13 - File Upload Remote Code Execution (Authenticated)            
 There does not seem we can do much else, so we keep that information and we will move to port 3000.
 
 On that port we look around and see an interesting message
-
-![Port 3000 Contact Page](img/p3000.png "Port 3000 Contact Page")
 
 Seems that we get information that `norman` loves his dog named "isabel" and he can build FTP servers.
 
@@ -314,7 +303,6 @@ if (defined('TESTING'))
 We find a password `CharlesTreePokemon44`
 
 We can try this with SSH (for example for the `norman` user) but we don't get anywhere.
-
 
 # Foothold
 
