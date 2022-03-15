@@ -318,8 +318,6 @@ Uploaded Webshell to: http://172.16.118.131:80/cms/files/shell.phar
 
 Indeed it works and seems that it has uploaded a webshell in the cms directory as the user `www-data`.
 
-## Escalation
-
 Although this is a decent shell, we want to have a more stable one, more functional if we need to edit files for example.
 
 Let's use socat.
